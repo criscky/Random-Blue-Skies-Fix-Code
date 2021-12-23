@@ -20,8 +20,8 @@ apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
 version = '1.0'
-group = 'com.yourname.modid' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'modid'
+group = 'com.criscky.randfix' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'randfix'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 8 to end users, so your mod should target Java 8.
 
@@ -51,7 +51,7 @@ minecraft {
             workingDirectory project.file('run')
             properties 'mixin.env.remapRefMap': 'true'
             property 'mixin.env.refMapRemappingFile', "${project.projectDir}/build/createSrgToMcp/output.srg"
-            args '-mixin.config=mymod.mixins.json'
+            args '-mixin.config=randfix.mixins.json'
 
             // Recommended logging data for a userdev environment
             // The markers can be changed as needed.
@@ -66,7 +66,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                randfix {
                     source sourceSets.main
                 }
             }
@@ -76,7 +76,7 @@ minecraft {
             workingDirectory project.file('run')
             properties 'mixin.env.remapRefMap': 'true'
             property 'mixin.env.refMapRemappingFile', "${project.projectDir}/build/createSrgToMcp/output.srg"
-            args '-mixin.config=mymod.mixins.json'
+            args '-mixin.config=randfix.mixins.json'
 
             // Recommended logging data for a userdev environment
             // The markers can be changed as needed.
@@ -91,7 +91,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                randfix {
                     source sourceSets.main
                 }
             }
@@ -115,10 +115,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'randfix', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                examplemod {
+                randfix {
                     source sourceSets.main
                 }
             }
@@ -174,14 +174,14 @@ dependencies {
 jar {
     manifest {
         attributes([
-            "Specification-Title": "examplemod",
-            "Specification-Vendor": "examplemodsareus",
+            "Specification-Title": "randfix",
+            "Specification-Vendor": "criscky",
             "Specification-Version": "1", // We are version 1 of ourselves
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"examplemodsareus",
+            "Implementation-Vendor" :"criscky",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-            "MixinConfigs": "mymod.mixins.json"
+            "MixinConfigs": "randfix.mixins.json"
         ])
     }
 }
@@ -207,5 +207,5 @@ publishing {
 
 mixin {
     // MixinGradle Settings
-    add sourceSets.main, 'mymod.refmap.json'
+    add sourceSets.main, 'randfix.refmap.json'
 }
